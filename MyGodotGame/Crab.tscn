@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://1kwh8o16a4ba"]
+
+[ext_resource type="Script" path="res://Crab.gd" id="1_myi7q"]
+[ext_resource type="Texture2D" uid="uid://dwjt8o11wqxi6" path="res://art/Crab/Idle/Crab1.png" id="1_vje7w"]
+[ext_resource type="Texture2D" uid="uid://bkxxdvvc0sovg" path="res://art/Crab/Idle/Crab2.png" id="2_r421w"]
+[ext_resource type="Texture2D" uid="uid://b12shvq2r3xqt" path="res://art/Crab/Idle/Crab3.png" id="3_draxq"]
+[ext_resource type="Texture2D" uid="uid://rl8428sepqk4" path="res://art/Crab/Idle/Crab4.png" id="4_jrhom"]
+[ext_resource type="Texture2D" uid="uid://cle5rogbav8wx" path="res://art/Crab/Idle/Crab5.png" id="5_hirdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56s7x"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j04te"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vje7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r421w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_draxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jrhom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hirdx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 15.0
+}]
+
+[node name="Crab" type="CharacterBody2D"]
+position = Vector2(132, 86)
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 13
+script = ExtResource("1_myi7q")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_56s7x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.19209e-06, -1.19209e-07)
+sprite_frames = SubResource("SpriteFrames_j04te")
+animation = &"Idle"
+frame = 3
+frame_progress = 0.406648

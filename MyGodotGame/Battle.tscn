@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp4j1nkm13ilp"]
+
+[ext_resource type="Texture2D" uid="uid://dfn5r1gbwbh00" path="res://art/Background/beach.png" id="1_n246q"]
+[ext_resource type="Script" path="res://Battle.gd" id="1_vben0"]
+[ext_resource type="PackedScene" uid="uid://xm70t0chw1ve" path="res://Player.tscn" id="2_2tf48"]
+[ext_resource type="FontFile" uid="uid://dd5l5qfmm8ukv" path="res://art/Fonts/PeaberryBase.ttf" id="4_w88ge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dp8fi"]
+size = Vector2(23.75, 1088)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xwaln"]
+size = Vector2(1936, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_0xpqc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1922, 2, 0, 0, 0, 0, 1920, 1072, 0, 0, 0, 0, 10, 1070, 0, 0, 0, 0, 1, -1, 0, 0, 0, 0, 1920, -1)
+}
+point_count = 5
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_vben0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1075.0
+texture = ExtResource("1_n246q")
+
+[node name="Wall1" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1"]
+position = Vector2(-8, 533)
+shape = SubResource("RectangleShape2D_dp8fi")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(1934, 539)
+shape = SubResource("RectangleShape2D_dp8fi")
+
+[node name="Wall3" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3"]
+position = Vector2(961, -11)
+shape = SubResource("RectangleShape2D_xwaln")
+
+[node name="Wall4" type="StaticBody2D" parent="."]
+position = Vector2(-6, 1097)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4"]
+position = Vector2(961, -11)
+shape = SubResource("RectangleShape2D_xwaln")
+
+[node name="Player" parent="." instance=ExtResource("2_2tf48")]
+position = Vector2(859, 590)
+scale = Vector2(2, 2)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0xpqc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1538.08, 1071.6)
+rotation = -3.14055
+progress = 1451.92
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 930.0
+offset_top = 26.0
+offset_right = 999.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("4_w88ge")
+theme_override_font_sizes/font_size = 100
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://clg8lo6fwb4i1"]
+
+[ext_resource type="Script" path="res://Settings.gd" id="1_lxvll"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lxvll")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 915.0
+offset_right = 775.0
+offset_bottom = 971.0
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1241.0
+offset_top = 918.0
+offset_right = 1564.0
+offset_bottom = 974.0
+text = "Quit"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
