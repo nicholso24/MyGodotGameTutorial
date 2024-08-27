@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+# Sprite from GandalfHardcore on itch.io
+
 var speed = 500
 
 var can_parry = true

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# Sprite from Camacebra Games on itch.io
 class_name Crab
 var normal_speed = 0.5
 var has_bump = true
